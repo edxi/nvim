@@ -30,7 +30,7 @@ if empty(glob('~/.config/nvim/_machine_specific.vim'))
 	let has_machine_specific_file = 0
 	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
 endif
-source $XDG_CONFIG_HOME/nvim/_machine_specific.vim
+source ~/.config/nvim/_machine_specific.vim
 
 
 " ====================
@@ -141,11 +141,11 @@ noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 noremap <LEADER>rv :e .nvimrc<CR>
 
 " Undo operations
-noremap l u
+"noremap l u
 
 " Insert Key
-noremap k i
-noremap K I
+"noremap k i
+"noremap K I
 
 " make Y to copy till the end of the line
 nnoremap Y y$
@@ -168,7 +168,7 @@ nnoremap <LEADER>tt :%s/    /\t/g
 vnoremap <LEADER>tt :s/    /\t/g
 
 " Folding
-noremap <silent> <LEADER>o za
+"noremap <silent> <LEADER>o za
 
 " nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
@@ -182,65 +182,67 @@ noremap <silent> <LEADER>o za
 " < n   i >
 "     e
 "     v
-noremap <silent> u k
-noremap <silent> n h
-noremap <silent> e j
-noremap <silent> i l
-noremap <silent> gu gk
-noremap <silent> ge gj
-noremap <silent> \v v$h
+"noremap <silent> u k
+"noremap <silent> n h
+"noremap <silent> e j
+"noremap <silent> i l
+"noremap <silent> gu gk
+"noremap <silent> ge gj
+"noremap <silent> \v v$h
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> U 5k
-noremap <silent> E 5j
+noremap <silent> K 5k
+noremap <silent> J 5j
+"noremap <silent> U 5k
+"noremap <silent> E 5j
 
 " N key: go to the start of the line
-noremap <silent> N 0
+"noremap <silent> N 0
 " I key: go to the end of the line
-noremap <silent> I $
+"noremap <silent> I $
 
 " Faster in-line navigation
-noremap W 5w
-noremap B 5b
+"noremap W 5w
+"noremap B 5b
 
 " set h (same as n, cursor left) to 'end of word'
-noremap h e
+"noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-noremap <C-U> 5<C-y>
-noremap <C-E> 5<C-e>
+"noremap <C-U> 5<C-y>
+"noremap <C-E> 5<C-e>
 
 
 
-source $XDG_CONFIG_HOME/nvim/cursor.vim
+"source ~/.config/nvim/cursor.vim
 
 "If you use Qwerty keyboard, uncomment the next line.
-"source $XDG_CONFIG_HOME/nvim/cursor_for_qwerty.vim
+source ~/.config/nvim/cursor_for_qwerty.vim
 
 " ===
 " === Insert Mode Cursor Movement
 " ===
-inoremap <C-a> <ESC>A
+"inoremap <C-a> <ESC>A
 
 
 " ===
 " === Command Mode Cursor Movement
 " ===
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <M-b> <S-Left>
-cnoremap <M-w> <S-Right>
+"cnoremap <C-a> <Home>
+"cnoremap <C-e> <End>
+"cnoremap <C-p> <Up>
+"cnoremap <C-n> <Down>
+"cnoremap <C-b> <Left>
+"cnoremap <C-f> <Right>
+"cnoremap <M-b> <S-Left>
+"cnoremap <M-w> <S-Right>
 
 
 " ===
 " === Searching
 " ===
-noremap - N
-noremap = n
+"noremap - N
+"noremap = n
 
 
 " ===
@@ -248,20 +250,24 @@ noremap = n
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
 noremap <LEADER>w <C-w>w
-noremap <LEADER>u <C-w>k
-noremap <LEADER>e <C-w>j
-noremap <LEADER>n <C-w>h
-noremap <LEADER>i <C-w>l
-noremap qf <C-w>o
+noremap <LEADER>k <C-w>k
+noremap <LEADER>j <C-w>j
+noremap <LEADER>h <C-w>h
+noremap <LEADER>l <C-w>l
+"noremap qf <C-w>o
+
+" 切换 buffer
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> [n :bnext<CR>
 
 " Disable the default s key
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap se :set splitbelow<CR>:split<CR>
-noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap si :set splitright<CR>:vsplit<CR>
+noremap sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap sj :set splitbelow<CR>:split<CR>
+noremap sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap sl :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 noremap <up> :res +5<CR>
@@ -270,12 +276,12 @@ noremap <left> :vertical resize-5<CR>
 noremap <right> :vertical resize+5<CR>
 
 " Place the two screens up and down
-noremap sh <C-w>t<C-w>K
+noremap sp <C-w>t<C-w>K
 " Place the two screens side by side
 noremap sv <C-w>t<C-w>H
 
 " Rotate screens
-noremap srh <C-w>b<C-w>K
+noremap srp <C-w>b<C-w>K
 noremap srv <C-w>b<C-w>H
 
 " Press <SPACE> + q to close the window below the current window
@@ -286,20 +292,20 @@ noremap <LEADER>q <C-w>j:q<CR>
 " === Tab management
 " ===
 " Create a new tab with tu
-noremap tu :tabe<CR>
+noremap tk :tabe<CR>
 " Move around tabs with tn and ti
-noremap tn :-tabnext<CR>
-noremap ti :+tabnext<CR>
+noremap th :-tabnext<CR>
+noremap tl :+tabnext<CR>
 " Move the tabs with tmn and tmi
-noremap tmn :-tabmove<CR>
-noremap tmi :+tabmove<CR>
+noremap tmh :-tabmove<CR>
+noremap tml :+tabmove<CR>
 
 
 " ===
 " === Markdown Settings
 " ===
 " Snippets
-source $XDG_CONFIG_HOME/nvim/md-snippets.vim
+source ~/.config/nvim/md-snippets.vim
 " auto spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
@@ -320,9 +326,9 @@ noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 noremap <LEADER>sc :set spell!<CR>
 
 " Press ` to change case (instead of ~)
-noremap ` ~
+"noremap ` ~
 
-noremap <C-c> zz
+"noremap <C-c> zz
 
 " Auto change directory to current dir
 autocmd BufEnter * silent! lcd %:p:h
@@ -405,7 +411,8 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'nvim-treesitter/playground'
 
 " Pretty Dress
-Plug 'theniceboy/nvim-deus'
+" Plug 'theniceboy/nvim-deus'
+Plug 'ajmwagar/vim-deus'
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
@@ -693,7 +700,7 @@ function! Show_documentation()
 		call CocAction('doHover')
 	endif
 endfunction
-nnoremap <LEADER>h :call Show_documentation()<CR>
+nnoremap <LEADER>m :call Show_documentation()<CR>
 " set runtimepath^=~/.config/nvim/coc-extensions/coc-flutter-tools/
 " let g:coc_node_args = ['--nolazy', '--inspect-brk=6045']
 " let $NVIM_COC_LOG_LEVEL = 'debug'
@@ -704,12 +711,12 @@ nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
 nmap <silent> <LEADER>= <Plug>(coc-diagnostic-next)
 nnoremap <c-c> :CocCommand<CR>
 " Text Objects
-xmap kf <Plug>(coc-funcobj-i)
+xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
-omap kf <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-xmap kc <Plug>(coc-classobj-i)
-omap kc <Plug>(coc-classobj-i)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 " Useful commands
@@ -813,12 +820,12 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
-let g:Lf_CommandMap = {
-\   '<C-k>': ['<C-u>'],
-\   '<C-j>': ['<C-e>'],
-\   '<C-]>': ['<C-v>'],
-\   '<C-p>': ['<C-n>'],
-\}
+"let g:Lf_CommandMap = {
+"\   '<C-k>': ['<C-u>'],
+"\   '<C-j>': ['<C-e>'],
+"\   '<C-]>': ['<C-v>'],
+"\   '<C-p>': ['<C-n>'],
+"\}
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_WildIgnore = {
@@ -870,12 +877,12 @@ let g:undotree_ShortIndicators = 1
 let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
-function g:Undotree_CustomMap()
-	nmap <buffer> u <plug>UndotreeNextState
-	nmap <buffer> e <plug>UndotreePreviousState
-	nmap <buffer> U 5<plug>UndotreeNextState
-	nmap <buffer> E 5<plug>UndotreePreviousState
-endfunc
+"function g:Undotree_CustomMap()
+"	nmap <buffer> u <plug>UndotreeNextState
+"	nmap <buffer> e <plug>UndotreePreviousState
+"	nmap <buffer> U 5<plug>UndotreeNextState
+"	nmap <buffer> E 5<plug>UndotreePreviousState
+"endfunc
 
 
 " ==
@@ -895,21 +902,27 @@ endfunc
 " ===
 " === vim-visual-multi
 " ===
-"let g:VM_theme             = 'iceblue'
-"let g:VM_default_mappings = 0
-let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+let g:VM_theme                      = 'iceblue'
+let g:VM_highlight_matches          = 'underline'
 let g:VM_maps                       = {}
-let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
-let g:VM_maps['i']                  = 'k'
-let g:VM_maps['I']                  = 'K'
-let g:VM_maps['Find Under']         = '<C-k>'
-let g:VM_maps['Find Subword Under'] = '<C-k>'
-let g:VM_maps['Find Next']          = ''
-let g:VM_maps['Find Prev']          = ''
-let g:VM_maps['Remove Region']      = 'q'
-let g:VM_maps['Skip Region']        = '<c-n>'
-let g:VM_maps["Undo"]               = 'l'
+let g:VM_maps["Select Cursor Down"] = '<C-j>'
+let g:VM_maps["Select Cursor Up"]   = '<C-k>'
+let g:VM_maps["Undo"]               = 'u'
 let g:VM_maps["Redo"]               = '<C-r>'
+"let g:VM_default_mappings = 0
+"let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
+"let g:VM_maps                       = {}
+"let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+"let g:VM_maps['i']                  = 'k'
+"let g:VM_maps['I']                  = 'K'
+"let g:VM_maps['Find Under']         = '<C-k>'
+"let g:VM_maps['Find Subword Under'] = '<C-k>'
+"let g:VM_maps['Find Next']          = ''
+"let g:VM_maps['Find Prev']          = ''
+"let g:VM_maps['Remove Region']      = 'q'
+"let g:VM_maps['Skip Region']        = '<c-n>'
+"let g:VM_maps["Undo"]               = 'l'
+"let g:VM_maps["Redo"]               = '<C-r>'
 
 
 " ===
@@ -1004,25 +1017,25 @@ let maplocalleader=' '
 " ===
 "noremap \c :Calendar -position=here<CR>
 noremap \\ :Calendar -view=clock -position=here<CR>
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-augroup calendar-mappings
-	autocmd!
-	" diamond cursor
-	autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
-	autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
-	autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
-	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
-	autocmd FileType calendar nmap <buffer> <c-u> <Plug>(calendar_move_up)
-	autocmd FileType calendar nmap <buffer> <c-n> <Plug>(calendar_move_left)
-	autocmd FileType calendar nmap <buffer> <c-e> <Plug>(calendar_move_down)
-	autocmd FileType calendar nmap <buffer> <c-i> <Plug>(calendar_move_right)
-	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
-	autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
-	" unmap <C-n>, <C-p> for other plugins
-	autocmd FileType calendar nunmap <buffer> <C-n>
-	autocmd FileType calendar nunmap <buffer> <C-p>
-augroup END
+" let g:calendar_google_calendar = 1
+" let g:calendar_google_task = 1
+"augroup calendar-mappings
+"	autocmd!
+"	" diamond cursor
+"	autocmd FileType calendar nmap <buffer> u <Plug>(calendar_up)
+"	autocmd FileType calendar nmap <buffer> n <Plug>(calendar_left)
+"	autocmd FileType calendar nmap <buffer> e <Plug>(calendar_down)
+"	autocmd FileType calendar nmap <buffer> i <Plug>(calendar_right)
+"	autocmd FileType calendar nmap <buffer> <c-u> <Plug>(calendar_move_up)
+"	autocmd FileType calendar nmap <buffer> <c-n> <Plug>(calendar_move_left)
+"	autocmd FileType calendar nmap <buffer> <c-e> <Plug>(calendar_move_down)
+"	autocmd FileType calendar nmap <buffer> <c-i> <Plug>(calendar_move_right)
+"	autocmd FileType calendar nmap <buffer> k <Plug>(calendar_start_insert)
+"	autocmd FileType calendar nmap <buffer> K <Plug>(calendar_start_insert_head)
+"	" unmap <C-n>, <C-p> for other plugins
+"	autocmd FileType calendar nunmap <buffer> <C-n>
+"	autocmd FileType calendar nunmap <buffer> <C-p>
+"augroup END
 
 
 " ===
@@ -1356,7 +1369,8 @@ let g:move_key_modifier = 'C'
 " ===
 " === any-jump
 " ===
-nnoremap j :AnyJump<CR>
+let g:any_jump_disable_default_keybindings = 1
+nnoremap <leader>aj :AnyJump<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 
